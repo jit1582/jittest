@@ -1,9 +1,10 @@
 This is a test file
-Follow below commands
+Follow below commands for ADD
 1) git add .
 2) git commit -m "Commit message comes here"
 3) git push
 	enter username
 	enter password
 	
+4) Done
 	
