@@ -7,4 +7,5 @@ Follow below commands for ADD
 	enter password
 	
 4) Done
+5) Okie for now
 	
