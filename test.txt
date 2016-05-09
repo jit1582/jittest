@@ -9,3 +9,4 @@ Follow below commands for ADD
 4) Done
 5) Okie for now
 	
+6) git clone https://github.com/MichaelOstling/MG_Geonetwork3.git
