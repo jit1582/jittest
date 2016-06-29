@@ -10,3 +10,20 @@ Follow below commands for ADD
 5) Okie for now
 	
 6) git clone https://github.com/MichaelOstling/MG_Geonetwork3.git
+
+7) If you delete a folder or file on local then do following
+	a) You shall get below out put stating something is deleted locally but not committed.
+			$ git status
+			On branch master
+			Your branch is up-to-date with 'origin/master'.
+
+			Changes not staged for commit:
+			  (use "git add/rm <file>..." to update what will be committed)
+			  (use "git checkout -- <file>..." to discard changes in working directory)
+
+					deleted:    test/abc.txt
+
+			no changes added to commit (use "git add" and/or "git commit -a")
+	b) So now run below command git checkout -- test and this should restore folder or file from remote machine to your local.
+		hp-pc@HP /g/tutorials/github/jittest (master)
+		$ git checkout -- test
