@@ -2,7 +2,7 @@ This is a test file
 Follow below commands for ADD
 1) git add .
 2) git commit -m "Commit message comes here"
-3) git push
+3) git push (git push -u origin develop)
 	enter username
 	enter password
 	
@@ -10,7 +10,7 @@ Follow below commands for ADD
 5) Okie for now
 	
 6) git clone https://github.com/MichaelOstling/MG_Geonetwork3.git
-
+	git clone https://github.com/sdi-sweden/se-core-geonetwork.git
 7) If you delete a folder or file on local then do following
 	a) You shall get below out put stating something is deleted locally but not committed.
 			$ git status
@@ -27,3 +27,15 @@ Follow below commands for ADD
 	b) So now run below command git checkout -- test and this should restore folder or file from remote machine to your local.
 		hp-pc@HP /g/tutorials/github/jittest (master)
 		$ git checkout -- test
+		
+		You can even use $ git checkout -- .
+		
+	c) https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html
+	
+	d) To check remote repository url use below
+	$ git remote -v
+	
+	e) If some one had done checkins and you want to update your local repo then use below command
+		$ git pull origin develop
+		
+	f) https://app.assembla.com/spaces/kcubemetagis/wiki/setup_geonetwork_code_for_building_with_GitHub
