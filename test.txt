@@ -3,7 +3,7 @@ Follow below commands for ADD
 1) git add .
 2) git commit -m "Commit message comes here"
 3) git push (git push -u origin develop)
-	enter username
+	enter username 
 	enter password
 	
 4) Done
@@ -38,4 +38,4 @@ Follow below commands for ADD
 	e) If some one had done checkins and you want to update your local repo then use below command
 		$ git pull origin develop
 		
-	f) https://app.assembla.com/spaces/kcubemetagis/wiki/setup_geonetwork_code_for_building_with_GitHub
+	f) GITGUB info wiki page : https://app.assembla.com/spaces/kcubemetagis/wiki/setup_geonetwork_code_for_building_with_GitHub
