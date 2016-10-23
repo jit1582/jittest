@@ -9,8 +9,9 @@ Follow below commands for ADD
 4) Done
 5) Okie for now
 	
-6) git clone https://github.com/MichaelOstling/MG_Geonetwork3.git
-	git clone https://github.com/sdi-sweden/se-core-geonetwork.git
+6) git clone --recursive https://github.com/MichaelOstling/MG_Geonetwork3.git
+	git clone --recursive https://github.com/sdi-sweden/se-core-geonetwork.git
+(https://github.com/sdi-sweden/se-core-geonetwork/commits/develop-latest)
 7) If you delete a folder or file on local then do following
 	a) You shall get below out put stating something is deleted locally but not committed.
 			$ git status
@@ -39,3 +40,66 @@ Follow below commands for ADD
 		$ git pull origin develop
 		
 	f) GITGUB info wiki page : https://app.assembla.com/spaces/kcubemetagis/wiki/setup_geonetwork_code_for_building_with_GitHub
+	
+	g) If you want to check your settings, you can use the git config --list command to list all the settings Git can find at that point:
+	$ git config --list
+		user.name=John Doe
+		user.email=johndoe@example.com
+		color.status=auto
+		color.branch=auto
+		color.interactive=auto
+		color.diff=auto
+		...
+		
+GN 3.0 setup
+1) Eclipse Mars 2.0.
+- Created the GN 3.0 workspace at one location on disc.
+- Configured Maven in Eclipse.
+- Created and configured maven3_repo where all maven downloaded jars will be stored locally.
+- Checking for any updates for eclipse. So it updated the eclipse.
+- Downloaded and installed FindBugs plugin from following site - http://findbugs.cs.umd.edu/eclipse/
+- Downloaded and installed Tomcat8.0.9 with tomcat8/tomcat8 as username/pwd.
+- Created and configured Tomcat server and tested it by dry run inside eclipse.
+
+- Open GIT location on disc and fire below 
+1) C:\GN3\sourcecode\sdi-sweden>git clone --recursive https://github.com/sdi-sweden/se-core-geonetwork.git
+- This will download all source code. The downloading should take a lot of time.
+2) C:\GN3\sourcecode\sdi-sweden>git submodule init
+- Wait for execution
+3) C:\GN3\sourcecode\sdi-sweden>git submodule update
+- Wait for execution
+4) Next part is to import all projects into eclipse - Follow https://www.geocat.net/geonetwork-from-scratch-ii-attack-of-the-ides/
+	Import till '\sdi-sweden\se-core-geonetwork'
+	This will take long time. Keep on checking intermittently. Sometimes, we get some import error for projects or some confirmation for which we need to click ok etc.
+5) Next step is to build from command prompt (Only once)
+	set JAVA_HOME=C:\Program Files\Java\jdk1.8.0_102
+	set PATH=C:\Program Files\Java\jdk1.8.0_102\bin;%PATH%;
+	set MAVEN_HOME="C:\GN3\apache-maven-3.2.5"
+	set PATH="C:\GN3\apache-maven-3.2.5\bin";%PATH%;
+	C:\GN3\sourcecode\sdi-sweden>mvn clean package install -Penv-dev -DskipTests
+6) Now run the maven clean install from eclipse (Don't forget to skip tests. We don't need tests. It has some issue).
+maven clean package install
+Set DskipTests as parameter name and true as value.
+7) Next step is to increase memory.Add this in arguments - -Xms512m -Xmx512m -XX:MaxPermSize=512m
+8) Next is step to add in arguments
+-Dgeonetwork.dir=C:\GN3\geonetwork_data -Dgeonetwork.schema.dir=C:\Tomcat80\webapps\geonetwork\WEB-INF\data\config\schema_plugins -Dgeonetwork.codelist.dir=C:\Tomcat80\webapps\geonetwork\WEB-INF\data\config\codelist
+9) Copy generated war into Tomcat80/webapps.
+10) Keep port as 8080. May be increase startup time - 250.
+11) Link the tomcat deployed war as "Add External Web Module".
+12) For GN 3.0 project, we will be using PostGre sql. So follow this url
+http://geonetwork-opensource.org/manuals/trunk/eng/users/maintainer-guide/installing/configuring-database.html
+OR
+GN regualar changes:
+1) WEB-INF/config-node/srv.xml (Enable <import resource="../config-db/postgres.xml"/>. Disable others)
+2) WEB-INF/config-db/jdbc.properties (Configure username/pwd. In our case it is postgres/postgres).
+
+
+To Verify:
+1) PostGIS installation
+
+
+
+2) Jdk 1.8 
+3) Maven 3.2.5
+4) Tomcat 8.0.9
+5) PostGres 1.18.1
